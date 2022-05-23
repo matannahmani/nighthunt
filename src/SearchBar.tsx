@@ -13,7 +13,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import ImageWithLoader from './ImageWithLoader';
+import Image from 'next/image';
 import { SyntheticEvent, useMemo, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
@@ -22,7 +22,7 @@ import { Close, ErrorOutline } from '@mui/icons-material';
 import { Stack, Fade } from '@mui/material';
 import Lottie from 'react-lottie';
 import * as NotFound from './searchbar404.json';
-const SearchBarTriggerAtom = atom(true);
+const SearchBarTriggerAtom = atom(false);
 
 export const SearchBarTrigger = () => {
   const [isTriggred, setIsTriggred] = useAtom(SearchBarTriggerAtom);
@@ -70,7 +70,7 @@ const NoOption = () => (
   <>
     <Lottie
       options={{
-        loop: true,
+        loop: false,
         autoplay: true,
         animationData: NotFound,
         rendererSettings: {
@@ -89,7 +89,6 @@ const SearchBar = () => {
   const [isTriggred, setIsTriggred] = useAtom(SearchBarTriggerAtom);
 
   const [searchValue, setSearchValue] = useState('');
-  const [searchOptions, setSearchOptions] = useState([]);
 
   const onTextChange = (e: SyntheticEvent) => {
     setSearchValue((e.target as HTMLInputElement).value);
@@ -173,17 +172,18 @@ const SearchBar = () => {
                   borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
+                  overflow: 'hidden',
                 }}
                 key={option.title}
               >
-                <ImageWithLoader
+                <Image
                   width={120}
                   layout="raw"
                   quality={100}
                   height={120}
                   src={`/${option.img}`}
                 />
-                <Stack>
+                <Stack overflow="hidden">
                   <Typography variant="h6" ml={2}>
                     {option.title}
                   </Typography>
@@ -192,9 +192,17 @@ const SearchBar = () => {
                     mt={2}
                     justifyContent="flex-start"
                     alignItems="center"
-                    flexWrap="wrap"
+                    sx={(theme) => ({
+                      [theme.breakpoints.down(300)]: {
+                        overflowX: 'scroll',
+                        flexWrap: 'unset',
+                      },
+                      flexWrap: {
+                        xs: 'wrap',
+                      },
+                    })}
                     rowGap={1}
-                    spacing={1}
+                    gap={1}
                     direction="row"
                   >
                     {TagRender(option)}
@@ -239,6 +247,7 @@ const TagRender = (opt: clubOption) => {
       )}
       {opt.genres.map((genre) => (
         <Chip
+          key={`${opt.title}-${genre}`}
           label={genre}
           sx={{ width: 'fit-content' }}
           size="small"

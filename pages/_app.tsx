@@ -1,12 +1,13 @@
-import * as React from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import { useMediaQuery } from '@mui/material';
+import '../src/main.css';
+import theme from '../src/theme';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -18,31 +19,41 @@ export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        typography: {
-          fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-            '"Caesar Dressing, cursive"',
-          ].join(','),
-        },
+  // const theme = useMemo(
+  //   () =>
+  //     createTheme({
+  //       breakpoints: {
+  //         values: {
+  //           xs: 0,
+  //           fold: 300,
+  //           sm: 600,
+  //           md: 900,
+  //           lg: 1200,
+  //           xl: 1536,
+  //         },
+  //       },
+  //       typography: {
+  //         fontFamily: [
+  //           '-apple-system',
+  //           'BlinkMacSystemFont',
+  //           '"Segoe UI"',
+  //           'Roboto',
+  //           '"Helvetica Neue"',
+  //           'Arial',
+  //           'sans-serif',
+  //           '"Apple Color Emoji"',
+  //           '"Segoe UI Emoji"',
+  //           '"Segoe UI Symbol"',
+  //           '"Caesar Dressing, cursive"',
+  //         ].join(','),
+  //       },
 
-        palette: {
-          mode: 'dark',
-        },
-      }),
-    [prefersDarkMode]
-  );
+  //       palette: {
+  //         mode: 'dark',
+  //       },
+  //     }),
+  //   [prefersDarkMode]
+  // );
   return (
     <CacheProvider value={emotionCache}>
       <Head>

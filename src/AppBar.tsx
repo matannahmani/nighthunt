@@ -1,22 +1,22 @@
-import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import { Button, Menu, MenuItem, Stack } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import SearchBar from './SearchBar';
+import { SearchBarTrigger } from './SearchBar';
+import { MouseEvent, useState } from 'react';
+const pages = ["Top DJ'S", 'Top Clubs', 'Upcoming Events'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function SearchAppBar() {
-  const [isLogged, setLogged] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [isLogged, setLogged] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -111,23 +111,3 @@ export default function SearchAppBar() {
     </Box>
   );
 }
-
-// import * as React from 'react';
-// import AppBar from '@mui/material/AppBar';
-// import Box from '@mui/material/Box';
-// import Toolbar from '@mui/material/Toolbar';
-// import IconButton from '@mui/material/IconButton';
-// import Typography from '@mui/material/Typography';
-// import Menu from '@mui/material/Menu';
-// import MenuIcon from '@mui/icons-material/Menu';
-// import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
-// import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
-// import MenuItem from '@mui/material/MenuItem';
-// import AdbIcon from '@mui/icons-material/Adb';
-import { SearchBarTrigger } from './SearchBar';
-import ImageWithLoader from './ImageWithLoader';
-
-const pages = ["Top DJ'S", 'Top Clubs', 'Upcoming Events'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
