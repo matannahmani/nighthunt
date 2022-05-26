@@ -10,7 +10,6 @@ import * as ComingSoon from '../src/coming-soon.json';
 const Home: NextPage = () => {
   return (
     <>
-      <ResponsiveAppBar />
       <Container maxWidth="lg">
         <Box
           sx={{

@@ -20,7 +20,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-lottie": "^1.2.3"
+    "react-lottie": "^1.2.3",
+    "swiper": "^8.1.6"
   },
   "devDependencies": {
     "@types/node": "latest",
