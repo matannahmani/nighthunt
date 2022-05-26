@@ -9,6 +9,7 @@ import '../src/main.css';
 import theme from '../src/theme';
 import { Provider } from 'jotai';
 import Layout from '../src/Layout';
+import { useEffect, useState } from 'react';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -18,6 +19,8 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <CacheProvider value={emotionCache}>
@@ -28,7 +31,7 @@ export default function MyApp(props: MyAppProps) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Provider>
-          <Layout>
+          <Layout mounted={mounted}>
             <Component {...pageProps} />
           </Layout>
         </Provider>
