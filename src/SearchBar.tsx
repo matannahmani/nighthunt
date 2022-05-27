@@ -22,6 +22,7 @@ import { Close, ErrorOutline } from '@mui/icons-material';
 import { Stack, Fade } from '@mui/material';
 import Lottie from 'react-lottie';
 import * as NotFound from './searchbar404.json';
+import ImageWithLoader from './ImageWithLoader';
 const SearchBarTriggerAtom = atom(false);
 
 export const SearchBarTrigger = () => {
@@ -176,7 +177,7 @@ const SearchBar = () => {
                 }}
                 key={option.title}
               >
-                <Image
+                <ImageWithLoader
                   width={120}
                   layout="raw"
                   quality={100}

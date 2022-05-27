@@ -2,6 +2,7 @@ import { Chip, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Box } from '@mui/system';
+import ImageWithLoader from './ImageWithLoader';
 
 export type DjCard = {
   name: string;
@@ -82,11 +83,12 @@ export const DjCard = (props: DjCard) => {
 
   return (
     <Stack
+      onPointerEnter={() => setHover(true)}
+      onPointerLeave={() => setHover(false)}
       onMouseUp={() => setHover(false)}
       onMouseDown={() => setHover(true)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      onClick={() => console.log('test')}
       sx={{
         width: 210,
         height: 336,
@@ -94,11 +96,12 @@ export const DjCard = (props: DjCard) => {
       spacing={1}
     >
       <div style={{ overflow: 'hidden', borderRadius: '4px' }}>
-        <Image
+        <ImageWithLoader
           style={{
             transition: 'all 0.2s ease-in-out',
             transform: isHovering ? 'scale(1.05)' : 'scale(1)',
           }}
+          quality={100}
           layout={'responsive'}
           width={210}
           height={250}
