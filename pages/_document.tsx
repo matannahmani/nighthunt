@@ -10,6 +10,41 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta name="description" content="" />
+
+          {/* <!-- Google / Search Engine Tags --> */}
+          <meta itemProp="name" content="NightHunt" />
+          <meta
+            itemProp="description"
+            content="
+          NightHunt is a social network for DJs and producers.
+          Find your next party for the upcoming weekend.
+          "
+          />
+          <meta itemProp="image" content="/logo.png" />
+
+          {/* <!-- Facebook Meta Tags --> */}
+          <meta property="og:url" content="https://www.nighthunt.app" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Nighthunt" />
+          <meta
+            property="og:description"
+            content="
+                    NightHunt is a social network for DJs and producers.
+                    Find your next party for the upcoming weekend."
+          />
+          <meta property="og:image" content="/logo.png" />
+
+          {/* <!-- Twitter Meta Tags --> */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Nighthunt" />
+          <meta
+            name="twitter:description"
+            content="
+                    NightHunt is a social network for DJs and producers.
+                    Find your next party for the upcoming weekend."
+          />
+          <meta name="twitter:image" content="/logo.png" />
           <link
             rel="apple-touch-icon"
             sizes="57x57"

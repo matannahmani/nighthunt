@@ -1,6 +1,5 @@
 import { Mousewheel, FreeMode } from 'swiper';
 import { SwiperSlide, Swiper } from 'swiper/react';
-import GenreBox from './GenreBox';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
 import 'swiper/css/free-mode';

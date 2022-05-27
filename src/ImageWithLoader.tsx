@@ -27,7 +27,7 @@ const ImageWithLoader = (props: ImageProps) => {
         style={{
           ...props.style,
           opacity: isLoading ? 0 : 1,
-          transition: 'opacity 0.1s',
+          // transition: 'opacity 0.1s',
         }}
       />
     </>
