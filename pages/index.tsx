@@ -1,40 +1,13 @@
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Mousewheel } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/free-mode';
+
 import Image from 'next/image';
 import { GetStaticProps } from 'next';
-
-type Genre = {
-  name: string;
-  background: string[];
-  photo: string;
-};
-
-const GenreBox = (genre: Genre) => (
-  <Stack
-    sx={{
-      width: 200,
-      height: 100,
-      background: `${genre.background[2]}`,
-      borderRadius: 3,
-      ...genre.background.map((bg) => ({ background: `${bg}` })),
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-  >
-    <Typography
-      fontWeight="bold"
-      sx={{ textShadow: '0.5px 0.5px gray' }}
-      variant="h6"
-    >
-      {genre.name}
-    </Typography>
-  </Stack>
-);
+import { Genre } from '../types/Genre';
+import CategoryList from '../src/CategoryList';
+import GenreBox from '../src/GenreBox';
+import IndexCategory from '../src/IndexCategory';
+import { DJList } from '../src/DjCard';
 
 const GenreList: Genre[] = [
   {
@@ -44,6 +17,8 @@ const GenreList: Genre[] = [
       '-webkit-linear-gradient(to bottom, #50c9c3, #96deda)',
       'linear-gradient(to bottom, #50c9c3, #96deda)',
     ],
+    backgroundImage:
+      'linear-gradient(164.055deg, rgb(18, 220, 232), rgb(113, 97, 244) 100%)',
     photo: '/images/genres/techno.jpg',
   },
   {
@@ -53,6 +28,8 @@ const GenreList: Genre[] = [
       '-webkit-linear-gradient(to bottom, #faaca8, #ddd6f3)',
       'linear-gradient(to bottom, #faaca8, #ddd6f3)',
     ],
+    backgroundImage:
+      'linear-gradient(150.255deg, rgb(223, 70, 133), rgb(246, 124, 38) 100%)',
     photo: '/images/genres/house.jpg',
   },
   {
@@ -62,6 +39,8 @@ const GenreList: Genre[] = [
       '-webkit-linear-gradient(to bottom, #A8CABA, #5D4157)',
       'linear-gradient(to bottom, #A8CABA, #5D4157)',
     ],
+    backgroundImage:
+      'linear-gradient(232.125deg, rgb(255, 185, 0), rgb(255, 142, 0) 100%)',
     photo: '/images/genres/hardstyle.jpg',
   },
   {
@@ -71,6 +50,8 @@ const GenreList: Genre[] = [
       'webkit-linear-gradient(to bottom, #ff9472, #f2709c)',
       'linear-gradient(to bottom, #ff9472, #f2709c)',
     ],
+    backgroundImage:
+      'linear-gradient(164.055deg, rgb(245, 158, 24), rgb(243, 95, 20) 100%)',
     photo: '/images/genres/drum-and-bass.jpg',
   },
   {
@@ -80,6 +61,7 @@ const GenreList: Genre[] = [
       'webkit-linear-gradient(to bottom, #190A05, #870000)',
       'linear-gradient(to bottom, #190A05, #870000)',
     ],
+    backgroundImage: 'linear-gradient(131.186deg, #13547a 0%, #80d0c7 100%)',
     photo: '/images/genres/dance.jpg',
   },
   {
@@ -89,6 +71,9 @@ const GenreList: Genre[] = [
       'webkit-linear-gradient(to bottom, #8CA6DB, #B993D6)',
       'linear-gradient(to bottom, #8CA6DB, #B993D6)',
     ],
+    backgroundImage:
+      'linear-gradient(164.055deg, rgb(18, 220, 232), rgb(113, 97, 244) 100%)',
+
     photo: '/images/genres/hip-hop.jpg',
   },
   {
@@ -98,6 +83,8 @@ const GenreList: Genre[] = [
       'webkit-linear-gradient(to bottom, #FFAFBD, #C9FFBF)',
       'linear-gradient(to bottom, #FFAFBD, #C9FFBF)',
     ],
+    backgroundImage:
+      'linear-gradient(150.255deg, rgb(223, 70, 133), rgb(246, 124, 38) 100%)',
     photo: '/images/genres/pop.jpg',
   },
   {
@@ -107,6 +94,8 @@ const GenreList: Genre[] = [
       'webkit-linear-gradient(to bottom, #3f4c6b, #606c88)',
       'linear-gradient(to bottom, #3f4c6b, #606c88)',
     ],
+    backgroundImage:
+      'linear-gradient(232.125deg, rgb(255, 185, 0), rgb(255, 142, 0) 100%)',
     photo: '/images/genres/future-rave.jpg',
   },
   {
@@ -116,18 +105,16 @@ const GenreList: Genre[] = [
       'webkit-linear-gradient(to bottom, #BB377D, #FBD3E9)',
       'linear-gradient(to bottom, #BB377D, #FBD3E9)',
     ],
+    backgroundImage:
+      'linear-gradient(164.055deg, rgb(245, 158, 24), rgb(243, 95, 20) 100%)',
     photo: '/images/genres/edm.jpg',
   },
 ];
 
-type Category = {
-  name: string;
-};
-
 const Root = () => {
   return (
     <Container maxWidth="xl" sx={{ mt: 3 }}>
-      <Grid container spacing={3}>
+      <Grid container spacing={4}>
         <Grid
           item
           xs={12}
@@ -138,34 +125,18 @@ const Root = () => {
             position: 'relative',
           }}
         >
-          <Typography variant="h3">Welcome to the Night Hunt</Typography>
-          <Typography mt={2} variant="h6">
+          <Typography variant="h4" fontWeight={'bold'}>
+            Welcome to Night Hunt
+          </Typography>
+          <Typography mt={0} variant="h6">
             The best place to find your next Adventure
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Stack overflow="hidden" spacing={3}>
-            <Typography variant="h5" fontWeight="bold">
-              Categories
-            </Typography>
-            <Box width="100%" display="flex" flexDirection="row">
-              <Swiper
-                direction="horizontal"
-                spaceBetween={120}
-                slidesPerView={2}
-                mousewheel={true}
-                freeMode={true}
-                modules={[Mousewheel, FreeMode]}
-                className="mySwiper"
-              >
-                {GenreList.map((genre) => (
-                  <SwiperSlide key={genre.name}>
-                    <GenreBox {...genre} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </Box>
-          </Stack>
+          <IndexCategory title="Categories" list={GenreList} />
+        </Grid>
+        <Grid item xs={12}>
+          <IndexCategory title="Featured DJ" list={DJList} />
         </Grid>
       </Grid>
     </Container>
