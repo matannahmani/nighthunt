@@ -12,7 +12,6 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
 
           {/* <!-- Primary Meta Tags --> */}
-          <title>NightHunt</title>
           <meta name="title" content="NightHunt" />
           <meta
             name="description"

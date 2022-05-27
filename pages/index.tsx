@@ -1,11 +1,7 @@
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
-
-import Image from 'next/image';
 import { GetStaticProps } from 'next';
 import { Genre } from '../types/Genre';
-import CategoryList from '../src/CategoryList';
-import GenreBox from '../src/GenreBox';
 import IndexCategory from '../src/IndexCategory';
 import { DJList } from '../src/DjCard';
 
@@ -137,6 +133,21 @@ const Root = () => {
         </Grid>
         <Grid item xs={12}>
           <IndexCategory title="Featured DJ" list={DJList} />
+        </Grid>
+        <Grid item xs={12}>
+          <IndexCategory title="Featured Clubs" list={DJList} />
+        </Grid>
+        <Grid item xs={12}>
+          <IndexCategory title="Top EDM" list={DJList} />
+        </Grid>
+        <Grid item xs={12}>
+          <IndexCategory title="Featured Techno" list={DJList} />
+        </Grid>
+        <Grid item xs={12}>
+          <IndexCategory title="Featured House" list={DJList} />
+        </Grid>
+        <Grid item xs={12}>
+          <IndexCategory title="Featured Hardstyle" list={DJList} />
         </Grid>
         <Grid item xs={12}></Grid>
       </Grid>
