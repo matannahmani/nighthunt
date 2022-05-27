@@ -13,6 +13,9 @@ export const GenreBox = (genre: Genre) => (
       backgroundImage: `${genre.backgroundImage}`,
       transition: 'all 0.2s ease-in-out',
       cursor: 'pointer',
+      outline: 'none',
+      WebkitTapHighlightColor: 'transparent',
+
       ':hover': {
         transform: 'scale(1.05)',
       },

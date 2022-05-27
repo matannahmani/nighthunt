@@ -83,8 +83,8 @@ export const DjCard = (props: DjCard) => {
 
   return (
     <Stack
-      onPointerEnter={() => setHover(true)}
-      onPointerLeave={() => setHover(false)}
+      //   onPointerEnter={() => setHover(true)}
+      //   onPointerLeave={() => setHover(false)}
       onMouseUp={() => setHover(false)}
       onMouseDown={() => setHover(true)}
       onMouseEnter={() => setHover(true)}

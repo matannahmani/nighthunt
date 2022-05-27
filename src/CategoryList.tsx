@@ -10,7 +10,14 @@ export const CategoryList = ({ children }: { children: ReactElement[] }) => {
   return (
     <Swiper
       direction="horizontal"
-      spaceBetween={24}
+      breakpoints={{
+        0: {
+          spaceBetween: 32,
+        },
+        640: {
+          spaceBetween: 24,
+        },
+      }}
       slidesPerView={'auto'}
       mousewheel={true}
       freeMode={true}

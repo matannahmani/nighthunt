@@ -138,6 +138,7 @@ const Root = () => {
         <Grid item xs={12}>
           <IndexCategory title="Featured DJ" list={DJList} />
         </Grid>
+        <Grid item xs={12}></Grid>
       </Grid>
     </Container>
   );
